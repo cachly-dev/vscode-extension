@@ -1,0 +1,85 @@
+{
+  "name": "cachly-brain",
+  "displayName": "Cachly Brain",
+  "description": "AI Brain health monitor — shows lesson count, brain status, and last session in the VS Code status bar.",
+  "version": "0.5.0",
+  "publisher": "cachly",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HeinrichNebula/cachly"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "AI"
+  ],
+  "keywords": [
+    "cachly",
+    "ai",
+    "brain",
+    "memory",
+    "mcp",
+    "claude",
+    "copilot"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cachly.showBrainHealth",
+        "title": "Cachly: Show Brain Health"
+      },
+      {
+        "command": "cachly.showLessons",
+        "title": "Cachly: Show Lessons"
+      },
+      {
+        "command": "cachly.refreshBrain",
+        "title": "Cachly: Refresh Brain Status"
+      }
+    ],
+    "configuration": {
+      "title": "Cachly Brain",
+      "properties": {
+        "cachly.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Cachly API key (cky_live_...)"
+        },
+        "cachly.instanceId": {
+          "type": "string",
+          "default": "",
+          "description": "Your Cachly Brain instance UUID"
+        },
+        "cachly.apiUrl": {
+          "type": "string",
+          "default": "https://api.cachly.dev",
+          "description": "Cachly API base URL"
+        },
+        "cachly.refreshInterval": {
+          "type": "number",
+          "default": 300,
+          "description": "Status bar refresh interval in seconds"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
